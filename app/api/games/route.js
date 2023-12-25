@@ -12,7 +12,7 @@ export async function GET(req, res) {
 
     const data = await response.json();
 
-    return new NextResponse({ data: JSON.stringify(data) });
+    return NextResponse.json({ data }, { status: 200 });
   } catch (err) {
     console.error("Error fetching data: ", err);
 

@@ -1,8 +1,8 @@
 "use client";
-
 import { useEffect, useState } from "react";
+import GameCard from "@/components/GameCard";
 
-const Games = async () => {
+const Games = () => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
@@ -10,10 +10,8 @@ const Games = async () => {
       try {
         const res = await fetch("/api/games");
         if (res.ok) {
-          console.log(res.body);
-          const data = await res.json();
-          console.log(data);
-          setGames(data);
+          const { data } = await res.json();
+          setGames(data.results);
         } else {
           console.error("Failed to fetch data");
         }
@@ -25,7 +23,13 @@ const Games = async () => {
     fetchGames();
   }, []);
 
-  return <div>Games</div>;
+  return (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 pt-10">
+      {games.map((game, i) => (
+        <GameCard game={game} key={i} />
+      ))}
+    </div>
+  );
 };
 
 export default Games;
