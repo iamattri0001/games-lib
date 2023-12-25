@@ -29,6 +29,7 @@ const GameCard = ({ game }) => {
           height={300}
           width={300}
           alt="Image"
+          className="h-auto w-auto"
         />
       </div>
 
@@ -37,9 +38,6 @@ const GameCard = ({ game }) => {
         <div className="flex gap-5 items-center justify-center flex-wrap">
           <span className="text-accent-300 italic flex ">{showRating()}</span>
           <div className="flex gap-1 flex-wrap items-center justify-center w-fit">
-            <span className="text-[12px] bg-ui-800 px-[8px] py-[3px] rounded-3xl">
-              Anohe
-            </span>
             {game.genres.map((genre, i) => (
               <span
                 key={i}
@@ -53,7 +51,7 @@ const GameCard = ({ game }) => {
       </div>
 
       <Link href={`/games/${game.slug}`}>
-        <button className="ring-ui-400 ring-1 hover:bg-ui-900 text-accent-300 rounded px-4 py-1 flex items-center justify-center gap-x-2">
+        <button className="bg-ui-300 hover:bg-ui-400 transition-all text-background px-5 py-[.4rem] font-semibold rounded-full flex items-center justify-center gap-x-2">
           More <FaArrowRight />
         </button>
       </Link>
